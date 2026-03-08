@@ -1,0 +1,271 @@
+.about-container {
+  min-height: 100vh;
+  background: var(--bg-color);
+  color: var(--text-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 80px 5% 40px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.about-content {
+  max-width: 1200px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 80px;
+}
+
+.about-text {
+  flex: 1;
+  max-width: 500px;
+}
+
+.about-heading {
+  font-size: 4rem;
+  font-weight: 700;
+  color: var(--text-color);
+  margin-bottom: 30px;
+  letter-spacing: -1px;
+  transition: color 0.3s ease;
+}
+
+.about-description {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.about-intro {
+  font-size: 1.2rem;
+  line-height: 1.6;
+  color: var(--text-secondary);
+  margin: 0;
+  transition: color 0.3s ease;
+}
+
+.about-details {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--text-secondary);
+  margin: 0;
+  transition: color 0.3s ease;
+}
+
+.about-image-section {
+  flex: 1;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.image-container {
+  position: relative;
+  z-index: 2;
+}
+
+.about-image {
+  width: 400px;
+  height: 500px;
+  object-fit: cover;
+  border-radius: 20px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.about-image:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+}
+
+.brush-strokes {
+  position: absolute;
+  bottom: -30px;
+  left: -20px;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.brush-stroke {
+  position: absolute;
+  border-radius: 50px;
+  opacity: 0.8;
+}
+
+.brush-1 {
+  width: 80px;
+  height: 20px;
+  background: linear-gradient(45deg, #ff6b6b, #ffa500);
+  transform: rotate(-15deg);
+  bottom: 0;
+  left: 0;
+}
+
+.brush-2 {
+  width: 60px;
+  height: 15px;
+  background: linear-gradient(45deg, #4ecdc4, #45b7d1);
+  transform: rotate(25deg);
+  bottom: 25px;
+  left: 40px;
+}
+
+.brush-3 {
+  width: 70px;
+  height: 18px;
+  background: linear-gradient(45deg, #ffd93d, #ff6b6b);
+  transform: rotate(-5deg);
+  bottom: 50px;
+  left: 20px;
+}
+
+.brush-4 {
+  width: 50px;
+  height: 12px;
+  background: linear-gradient(45deg, #a8e6cf, #4ecdc4);
+  transform: rotate(35deg);
+  bottom: 75px;
+  left: 60px;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .about-content {
+    gap: 60px;
+  }
+  
+  .about-heading {
+    font-size: 3.5rem;
+  }
+  
+  .about-image {
+    width: 350px;
+    height: 450px;
+  }
+}
+
+@media (max-width: 768px) {
+  .about-container {
+    padding: 80px 4% 40px;
+  }
+  
+  .about-content {
+    flex-direction: column;
+    gap: 50px;
+    text-align: center;
+  }
+  
+  .about-text {
+    max-width: 100%;
+  }
+  
+  .about-heading {
+    font-size: 3rem;
+    margin-bottom: 25px;
+  }
+  
+  .about-intro {
+    font-size: 1.1rem;
+  }
+  
+  .about-details {
+    font-size: 0.95rem;
+  }
+  
+  .about-image {
+    width: 300px;
+    height: 380px;
+  }
+  
+  .brush-strokes {
+    bottom: -20px;
+    left: -10px;
+  }
+  
+  .brush-1 {
+    width: 60px;
+    height: 15px;
+  }
+  
+  .brush-2 {
+    width: 45px;
+    height: 12px;
+    bottom: 20px;
+    left: 30px;
+  }
+  
+  .brush-3 {
+    width: 55px;
+    height: 14px;
+    bottom: 40px;
+    left: 15px;
+  }
+  
+  .brush-4 {
+    width: 40px;
+    height: 10px;
+    bottom: 60px;
+    left: 45px;
+  }
+}
+
+@media (max-width: 480px) {
+  .about-container {
+    padding: 80px 3% 30px;
+  }
+  
+  .about-content {
+    gap: 40px;
+  }
+  
+  .about-heading {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+  }
+  
+  .about-intro {
+    font-size: 1rem;
+  }
+  
+  .about-details {
+    font-size: 0.9rem;
+  }
+  
+  .about-image {
+    width: 250px;
+    height: 320px;
+  }
+  
+  .brush-strokes {
+    bottom: -15px;
+    left: -5px;
+  }
+  
+  .brush-1 {
+    width: 50px;
+    height: 12px;
+  }
+  
+  .brush-2 {
+    width: 35px;
+    height: 10px;
+    bottom: 15px;
+    left: 25px;
+  }
+  
+  .brush-3 {
+    width: 45px;
+    height: 11px;
+    bottom: 30px;
+    left: 12px;
+  }
+  
+  .brush-4 {
+    width: 30px;
+    height: 8px;
+    bottom: 45px;
+    left: 35px;
+  }
+}

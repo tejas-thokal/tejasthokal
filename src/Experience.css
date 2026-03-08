@@ -1,0 +1,110 @@
+.experience-container {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background: #e8ecf1;
+  transition: background 0.5s ease;
+}
+
+.experience-container.dark {
+  background: #0a0a0f;
+}
+
+.experience-container canvas {
+  width: 100% !important;
+  height: 100% !important;
+}
+
+/* Hover Tooltip */
+.hover-tooltip {
+  position: fixed;
+  bottom: 80px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.75);
+  color: #fff;
+  padding: 8px 20px;
+  border-radius: 20px;
+  font-size: 14px;
+  font-family: 'Segoe UI', sans-serif;
+  pointer-events: none;
+  animation: tooltipFadeIn 0.3s ease;
+  z-index: 100;
+  backdrop-filter: blur(8px);
+}
+
+.dark .hover-tooltip {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+@keyframes tooltipFadeIn {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
+/* Mobile hint */
+.mobile-hint {
+  position: fixed;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.6);
+  color: #fff;
+  padding: 10px 24px;
+  border-radius: 24px;
+  font-size: 13px;
+  font-family: 'Segoe UI', sans-serif;
+  z-index: 100;
+  animation: hintPulse 2s ease-in-out infinite;
+  backdrop-filter: blur(8px);
+}
+
+@keyframes hintPulse {
+  0%, 100% { opacity: 0.7; }
+  50% { opacity: 1; }
+}
+
+/* Back button */
+.back-button {
+  position: fixed;
+  top: 24px;
+  left: 24px;
+  z-index: 200;
+  background: rgba(0, 0, 0, 0.7);
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-size: 14px;
+  cursor: pointer;
+  font-family: 'Segoe UI', sans-serif;
+  transition: all 0.2s ease;
+  backdrop-filter: blur(10px);
+}
+
+.back-button:hover {
+  background: rgba(0, 0, 0, 0.85);
+  transform: translateX(-2px);
+}
+
+/* Night mode indicator */
+.night-indicator {
+  position: fixed;
+  top: 24px;
+  right: 24px;
+  background: rgba(26, 35, 126, 0.7);
+  color: #fff;
+  padding: 6px 16px;
+  border-radius: 16px;
+  font-size: 12px;
+  font-family: 'Segoe UI', sans-serif;
+  z-index: 100;
+  backdrop-filter: blur(8px);
+}

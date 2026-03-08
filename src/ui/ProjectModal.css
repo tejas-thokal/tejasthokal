@@ -1,0 +1,133 @@
+/* Shared modal styles */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 300;
+  animation: overlayFadeIn 0.3s ease;
+  backdrop-filter: blur(4px);
+}
+
+.modal-overlay.dark {
+  background: rgba(0, 0, 0, 0.75);
+}
+
+@keyframes overlayFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.modal-close {
+  position: absolute;
+  top: 12px;
+  right: 16px;
+  background: none;
+  border: none;
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 28px;
+  cursor: pointer;
+  line-height: 1;
+  transition: color 0.2s;
+  z-index: 10;
+}
+
+.modal-close:hover {
+  color: #fff;
+}
+
+/* Project Modal */
+.project-modal {
+  position: relative;
+  background: #1e1e2e;
+  border-radius: 16px;
+  padding: 36px 32px 28px;
+  max-width: 500px;
+  width: 90vw;
+  color: #e0e0e0;
+  font-family: 'Segoe UI', sans-serif;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+  animation: modalSlideUp 0.4s ease;
+}
+
+@keyframes modalSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.modal-title {
+  font-size: 24px;
+  margin: 0 0 12px;
+  background: linear-gradient(135deg, #4fc3f7, #7c4dff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.modal-desc {
+  font-size: 14px;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.7);
+  margin: 0 0 20px;
+}
+
+.modal-tech {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+
+.tech-badge {
+  padding: 4px 12px;
+  background: rgba(79, 195, 247, 0.12);
+  border: 1px solid rgba(79, 195, 247, 0.25);
+  border-radius: 16px;
+  font-size: 12px;
+  color: #4fc3f7;
+}
+
+.modal-links {
+  display: flex;
+  gap: 12px;
+}
+
+.modal-btn {
+  padding: 10px 24px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 500;
+  transition: all 0.2s;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.modal-btn.github {
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.modal-btn.github:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.modal-btn.demo {
+  background: linear-gradient(135deg, #4fc3f7, #7c4dff);
+  color: #fff;
+}
+
+.modal-btn.demo:hover {
+  opacity: 0.9;
+}

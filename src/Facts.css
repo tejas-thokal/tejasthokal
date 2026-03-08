@@ -1,0 +1,390 @@
+.facts-container {
+  min-height: 100vh;
+  background: var(--bg-color);
+  color: var(--text-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 80px 5% 40px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.facts-content {
+  max-width: 1200px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 80px;
+}
+
+/* Monitor Section */
+.monitor-section {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.monitor {
+  position: relative;
+  width: 400px;
+  height: 300px;
+  background: #d3d3d3;
+  border-radius: 20px 20px 0 0;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  transform: perspective(1000px) rotateY(-15deg);
+  transition: transform 0.3s ease;
+}
+
+.monitor:hover {
+  transform: perspective(1000px) rotateY(-10deg) scale(1.02);
+}
+
+.monitor-screen {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  right: 20px;
+  bottom: 20px;
+  background: #000;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.monitor-stand {
+  position: absolute;
+  bottom: -40px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 40px;
+  background: #a0a0a0;
+  border-radius: 0 0 30px 30px;
+}
+
+.apple-logo {
+  position: absolute;
+  bottom: -60px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 20px;
+  height: 20px;
+  background: #000;
+  border-radius: 50%;
+}
+
+/* Yoda Character */
+.yoda-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.yoda-character {
+  position: absolute;
+  bottom: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+  animation: yodaFloat 3s ease-in-out infinite;
+}
+
+@keyframes yodaFloat {
+  0%, 100% { transform: translateX(-50%) translateY(0px); }
+  50% { transform: translateX(-50%) translateY(-5px); }
+}
+
+.yoda-image {
+  width: 80px;
+  height: 120px;
+  object-fit: contain;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
+}
+
+/* Lightsaber */
+.lightsaber-container {
+  position: absolute;
+  top: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 5;
+}
+
+.lightsaber {
+  position: relative;
+  transform: rotate(-15deg);
+}
+
+.lightsaber-blade {
+  width: 4px;
+  height: 80px;
+  background: linear-gradient(to bottom, #00ff00, #00cc00);
+  border-radius: 2px;
+  box-shadow: 0 0 20px #00ff00, 0 0 40px #00ff00;
+  animation: lightsaberGlow 2s ease-in-out infinite;
+}
+
+@keyframes lightsaberGlow {
+  0%, 100% { box-shadow: 0 0 20px #00ff00, 0 0 40px #00ff00; }
+  50% { box-shadow: 0 0 30px #00ff00, 0 0 60px #00ff00; }
+}
+
+.lightsaber-hilt {
+  position: absolute;
+  bottom: -5px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 12px;
+  height: 20px;
+  background: linear-gradient(45deg, #444, #666);
+  border-radius: 3px;
+}
+
+/* Pandora Background */
+.pandora-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, #87ceeb 0%, #98fb98 50%, #87ceeb 100%);
+  z-index: 1;
+}
+
+.floating-mountains {
+  position: absolute;
+  bottom: 20px;
+  width: 100%;
+  height: 60px;
+}
+
+.mountain {
+  position: absolute;
+  bottom: 0;
+  background: linear-gradient(45deg, #8b4513, #a0522d);
+  border-radius: 50% 50% 0 0;
+}
+
+.mountain-1 {
+  left: 10%;
+  width: 80px;
+  height: 40px;
+  transform: translateY(20px);
+}
+
+.mountain-2 {
+  left: 40%;
+  width: 60px;
+  height: 35px;
+  transform: translateY(25px);
+}
+
+.mountain-3 {
+  right: 15%;
+  width: 70px;
+  height: 45px;
+  transform: translateY(15px);
+}
+
+.waterfalls {
+  position: absolute;
+  bottom: 20px;
+  width: 100%;
+  height: 40px;
+}
+
+.waterfall {
+  position: absolute;
+  bottom: 0;
+  width: 3px;
+  background: linear-gradient(to bottom, transparent, #87ceeb);
+  animation: waterfallFlow 2s linear infinite;
+}
+
+@keyframes waterfallFlow {
+  0% { height: 0; opacity: 0; }
+  50% { height: 30px; opacity: 1; }
+  100% { height: 40px; opacity: 0.7; }
+}
+
+.waterfall-1 {
+  left: 25%;
+  height: 35px;
+}
+
+.waterfall-2 {
+  right: 30%;
+  height: 30px;
+  animation-delay: 1s;
+}
+
+.clouds {
+  position: absolute;
+  top: 20px;
+  width: 100%;
+  height: 40px;
+}
+
+.cloud {
+  position: absolute;
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 20px;
+  animation: cloudFloat 8s ease-in-out infinite;
+}
+
+.cloud-1 {
+  left: 10%;
+  width: 40px;
+  height: 20px;
+  animation-delay: 0s;
+}
+
+.cloud-2 {
+  left: 50%;
+  width: 30px;
+  height: 15px;
+  animation-delay: 2s;
+}
+
+.cloud-3 {
+  right: 15%;
+  width: 35px;
+  height: 18px;
+  animation-delay: 4s;
+}
+
+@keyframes cloudFloat {
+  0%, 100% { transform: translateX(0px); opacity: 0.6; }
+  50% { transform: translateX(20px); opacity: 1; }
+}
+
+/* Facts Text Section */
+.facts-text-section {
+  flex: 1;
+  max-width: 500px;
+}
+
+.facts-heading {
+  font-size: 3.5rem;
+  font-weight: 700;
+  color: var(--text-color);
+  margin-bottom: 30px;
+  letter-spacing: -1px;
+  transition: color 0.3s ease;
+}
+
+.facts-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.fact-item {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--text-secondary);
+  margin: 0;
+  transition: color 0.3s ease;
+}
+
+.highlight {
+  text-decoration: underline;
+  font-weight: 600;
+  color: var(--text-color);
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .facts-content {
+    gap: 60px;
+  }
+  
+  .facts-heading {
+    font-size: 3rem;
+  }
+  
+  .monitor {
+    width: 350px;
+    height: 260px;
+  }
+  
+  .yoda-image {
+    width: 70px;
+    height: 100px;
+  }
+}
+
+@media (max-width: 768px) {
+  .facts-container {
+    padding: 80px 4% 40px;
+  }
+  
+  .facts-content {
+    flex-direction: column;
+    gap: 50px;
+    text-align: center;
+  }
+  
+  .facts-text-section {
+    max-width: 100%;
+  }
+  
+  .facts-heading {
+    font-size: 2.5rem;
+    margin-bottom: 25px;
+  }
+  
+  .fact-item {
+    font-size: 0.95rem;
+  }
+  
+  .monitor {
+    width: 300px;
+    height: 220px;
+    transform: perspective(1000px) rotateY(-10deg);
+  }
+  
+  .yoda-image {
+    width: 60px;
+    height: 80px;
+  }
+  
+  .lightsaber-blade {
+    height: 60px;
+  }
+}
+
+@media (max-width: 480px) {
+  .facts-container {
+    padding: 80px 3% 30px;
+  }
+  
+  .facts-content {
+    gap: 40px;
+  }
+  
+  .facts-heading {
+    font-size: 2rem;
+    margin-bottom: 20px;
+  }
+  
+  .fact-item {
+    font-size: 0.9rem;
+  }
+  
+  .monitor {
+    width: 250px;
+    height: 180px;
+    transform: perspective(1000px) rotateY(-5deg);
+  }
+  
+  .yoda-image {
+    width: 50px;
+    height: 70px;
+  }
+  
+  .lightsaber-blade {
+    height: 50px;
+  }
+}
