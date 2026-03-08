@@ -5,7 +5,7 @@ import RoomScene from './components/Room/RoomScene';
 import InteractiveObjects from './components/Room/InteractiveObjects';
 import CameraController from './components/Room/CameraController';
 import ProjectModal from './ui/ProjectModal';
-import SkillsPanel from './ui/SkillsPanel';
+
 import TimelineModal from './ui/TimelineModal';
 import ContactPanel from './ui/ContactPanel';
 import LoadingScreen from './ui/LoadingScreen';
@@ -166,9 +166,6 @@ export default function Experience({ isDarkMode, toggleTheme }) {
           isDarkMode={isDarkMode}
         />
       )}
-      {showUI === 'books' && (
-        <SkillsPanel onClose={handleClose} isDarkMode={isDarkMode} />
-      )}
       {showUI === 'suitcase' && (
         <TimelineModal onClose={handleClose} isDarkMode={isDarkMode} />
       )}
@@ -188,7 +185,6 @@ function getTooltipText(name) {
     frame1: 'Airbnb Clone Project',
     frame2: 'AI Chat App Project',
     frame3: 'Dashboard Project',
-    books: 'View My Skills',
     suitcase: 'My Journey',
     lamp: 'Toggle Dark Mode',
     window: 'Contact Me',

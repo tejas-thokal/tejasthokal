@@ -5,8 +5,8 @@ import * as THREE from 'three';
 // Camera positions for each interactive object
 const FOCUS_POSITIONS = {
   monitor: {
-    position: [0.77, 0.35, 0.16],
-    lookAt: [0.77, 0.35, -0.684],
+    position: [0.976, 0.414, -0.05],
+    lookAt: [0.976, 0.414, -0.867],
     fov: 22,
   },
   frame1: {
@@ -20,10 +20,6 @@ const FOCUS_POSITIONS = {
   frame3: {
     position: [2, 2.5, 2],
     lookAt: [3, 2.5, 0],
-  },
-  books: {
-    position: [2, 2, 3],
-    lookAt: [1.5, 1.2, 0],
   },
   suitcase: {
     position: [3, 1.5, 3],
@@ -101,11 +97,10 @@ export default function InteractiveObjects({
   // Compute bounding boxes from actual model nodes when available
   const hitboxes = useMemo(() => {
     const defaults = [
-      { name: 'monitor', position: [0.77, 0.35, -0.685], size: [0.95, 0.50, 0.15] },
+      { name: 'monitor', position: [0.976, 0.414, -0.867], size: [0.60, 0.40, 0.15] },
       { name: 'frame1', position: [-2.4, 2.6, -1.5], size: [0.6, 0.5, 0.1] },
       { name: 'frame2', position: [-1.2, 2.6, -1.5], size: [0.6, 0.5, 0.1] },
       { name: 'frame3', position: [0, 2.6, -1.5], size: [0.6, 0.5, 0.1] },
-      { name: 'books', position: [1.5, 1.3, 0.3], size: [0.4, 0.3, 0.3] },
       { name: 'suitcase', position: [2.2, 0.3, 1.2], size: [0.5, 0.4, 0.3] },
       { name: 'lamp', position: [-0.8, 2.2, 0.3], size: [0.3, 0.4, 0.3] },
       { name: 'window', position: [-2.5, 2, -0.5], size: [0.1, 1, 0.8] },
@@ -167,7 +162,6 @@ function findNodeByHint(nodes, hint) {
     frame1: ['frame', 'picture', 'poster'],
     frame2: ['frame', 'picture', 'poster'],
     frame3: ['frame', 'picture', 'poster'],
-    books: ['book', 'shelf'],
     suitcase: ['suitcase', 'luggage', 'bag', 'case'],
     lamp: ['lamp', 'light'],
     window: ['window'],

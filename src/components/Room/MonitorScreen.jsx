@@ -7,15 +7,17 @@ import './MonitorScreen.css';
  * Renders the live portfolio website (https://tejasthokal.netlify.app)
  * as an iframe directly on the 3D monitor surface using drei Html.
  *
- * Monitor screen in the GLB is approximately at:
- *   center: [0.77, 0.35, -0.685]
- *   size:   ~0.97 x 0.50
+ * Monitor inner bezel in the GLB (Node-Mesh_13):
+ *   X [0.69482, 1.25715]  Y [0.23004, 0.59749]  back panel Z = -0.87869
+ *   exact screen: 0.56233 × 0.36745, center [0.97599, 0.41377]
  */
 // This GLB uses a single merged mesh, so we keep a stable anchor for the monitor display area.
 const SCREEN_ANCHOR = {
-  center: [0.77, 0.35, -0.684],
+  // Exact inner bezel rectangle from GLB vertex data.
+  // Z is offset +0.002 in front of the back panel (-0.87869) to prevent z-fighting.
+  center: [0.976, 0.4138, -0.8767],
   rotation: [0, 0, 0],
-  size: [0.885, 0.498], // 16:9 display area fitted to current monitor frame
+  size: [0.5623, 0.3675], // exact inner bezel width × height
 };
 
 // Temporary calibration overlay. Keep false in normal runtime.
@@ -52,7 +54,7 @@ export default function MonitorScreen({ active, isDarkMode }) {
   // Keep pixel ratio matched to the actual monitor aspect, then map pixels -> world units.
   const iframeWidthPx = 1600;
   const iframeHeightPx = Math.round(iframeWidthPx / aspect);
-  const htmlScale = (screenWidth * 0.985) / iframeWidthPx;
+  const htmlScale = screenWidth / iframeWidthPx;
 
   return (
     <group>
@@ -61,7 +63,7 @@ export default function MonitorScreen({ active, isDarkMode }) {
         position={SCREEN_ANCHOR.center}
         rotation={SCREEN_ANCHOR.rotation}
       >
-        <planeGeometry args={[screenWidth * 0.985, screenHeight * 0.985]} />
+        <planeGeometry args={[screenWidth, screenHeight]} />
         <meshStandardMaterial
           ref={glowRef}
           color="#0a0a14"
@@ -73,23 +75,11 @@ export default function MonitorScreen({ active, isDarkMode }) {
 
       {SHOW_SCREEN_DEBUG && (
         <group position={SCREEN_ANCHOR.center} rotation={SCREEN_ANCHOR.rotation}>
-          {/* Outer fit plane: use this to verify bezel fit visually */}
-          <mesh position={[0, 0, 0.013]}>
+          {/* Outer fit plane: matches full inner bezel */}
+          <mesh position={[0, 0, 0.003]}>
             <planeGeometry args={[screenWidth, screenHeight]} />
             <meshBasicMaterial
               color="#22ff66"
-              wireframe
-              transparent
-              opacity={0.65}
-              toneMapped={false}
-            />
-          </mesh>
-
-          {/* Active content plane: matches actual Html area */}
-          <mesh position={[0, 0, 0.014]}>
-            <planeGeometry args={[screenWidth * 0.985, screenHeight * 0.985]} />
-            <meshBasicMaterial
-              color="#00b7ff"
               wireframe
               transparent
               opacity={0.65}
@@ -107,7 +97,7 @@ export default function MonitorScreen({ active, isDarkMode }) {
         >
           <Html
             transform
-            position={[0, 0, 0.01]}
+            position={[0, 0, 0.002]}
             scale={htmlScale}
             distanceFactor={1}
             zIndexRange={[100, 0]}
@@ -116,7 +106,6 @@ export default function MonitorScreen({ active, isDarkMode }) {
             style={{
               width: `${iframeWidthPx}px`,
               height: `${iframeHeightPx}px`,
-              borderRadius: '6px',
               overflow: 'hidden',
               background: '#000',
               pointerEvents: 'auto',
