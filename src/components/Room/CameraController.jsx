@@ -6,6 +6,7 @@ import gsap from 'gsap';
 const DEFAULT_CAMERA = {
   position: [5, 5, 5],
   target: [0, 1, 0],
+  fov: 45,
 };
 
 export default function CameraController({ focusTarget, onAnimationComplete }) {
@@ -14,6 +15,11 @@ export default function CameraController({ focusTarget, onAnimationComplete }) {
   const isAnimating = useRef(false);
   const floatTime = useRef(0);
   const baseY = useRef(DEFAULT_CAMERA.position[1]);
+  const controlsTarget = useRef({
+    x: DEFAULT_CAMERA.target[0],
+    y: DEFAULT_CAMERA.target[1],
+    z: DEFAULT_CAMERA.target[2],
+  });
 
   // Subtle idle float
   useFrame((_, delta) => {
@@ -23,6 +29,11 @@ export default function CameraController({ focusTarget, onAnimationComplete }) {
       camera.position.y = baseY.current + floatOffset;
     }
     if (controlsRef.current) {
+      controlsRef.current.target.set(
+        controlsTarget.current.x,
+        controlsTarget.current.y,
+        controlsTarget.current.z
+      );
       controlsRef.current.update();
     }
   });
@@ -35,20 +46,37 @@ export default function CameraController({ focusTarget, onAnimationComplete }) {
       }
 
       const { position, lookAt } = focusTarget;
+      const focusFov = focusTarget.fov ?? DEFAULT_CAMERA.fov;
 
       gsap.to(camera.position, {
         x: position[0],
         y: position[1],
         z: position[2],
-        duration: 1.2,
+        duration: 1.35,
         ease: 'power2.inOut',
         onUpdate: () => {
           camera.lookAt(lookAt[0], lookAt[1], lookAt[2]);
         },
         onComplete: () => {
           isAnimating.current = false;
+          camera.lookAt(lookAt[0], lookAt[1], lookAt[2]);
           if (onAnimationComplete) onAnimationComplete();
         },
+      });
+
+      gsap.to(camera, {
+        fov: focusFov,
+        duration: 1.35,
+        ease: 'power2.inOut',
+        onUpdate: () => camera.updateProjectionMatrix(),
+      });
+
+      gsap.to(controlsTarget.current, {
+        x: lookAt[0],
+        y: lookAt[1],
+        z: lookAt[2],
+        duration: 1.35,
+        ease: 'power2.inOut',
       });
     } else {
       // Return to default
@@ -78,6 +106,21 @@ export default function CameraController({ focusTarget, onAnimationComplete }) {
             );
           }
         },
+      });
+
+      gsap.to(camera, {
+        fov: DEFAULT_CAMERA.fov,
+        duration: 1.0,
+        ease: 'power2.inOut',
+        onUpdate: () => camera.updateProjectionMatrix(),
+      });
+
+      gsap.to(controlsTarget.current, {
+        x: DEFAULT_CAMERA.target[0],
+        y: DEFAULT_CAMERA.target[1],
+        z: DEFAULT_CAMERA.target[2],
+        duration: 1.0,
+        ease: 'power2.inOut',
       });
     }
   }, [focusTarget, camera, onAnimationComplete]);
