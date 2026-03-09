@@ -5,9 +5,9 @@ import * as THREE from 'three';
 // Camera positions for each interactive object
 const FOCUS_POSITIONS = {
   monitor: {
-    position: [0.976, 0.414, -0.05],
-    lookAt: [0.976, 0.414, -0.867],
-    fov: 22,
+    position: [0.960, 0.424, -0.55],
+    lookAt: [0.960, 0.424, -0.875],
+    fov: 18,
   },
   frame1: {
     position: [-2, 2.5, 2],

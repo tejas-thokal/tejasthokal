@@ -13,11 +13,11 @@ import './MonitorScreen.css';
  */
 // This GLB uses a single merged mesh, so we keep a stable anchor for the monitor display area.
 const SCREEN_ANCHOR = {
-  // Exact inner bezel rectangle from GLB vertex data.
-  // Z is offset +0.002 in front of the back panel (-0.87869) to prevent z-fighting.
-  center: [0.976, 0.4138, -0.8767],
+  // Sized to fill the visible monitor opening (slightly larger than the back-panel
+  // inner bezel so the website covers the recessed bezel walls visible from the camera).
+  center: [0.960, 0.424, -0.8747],
   rotation: [0, 0, 0],
-  size: [0.5623, 0.3675], // exact inner bezel width × height
+  size: [0.68, 0.46], // visible screen opening width × height
 };
 
 // Temporary calibration overlay. Keep false in normal runtime.
@@ -97,9 +97,9 @@ export default function MonitorScreen({ active, isDarkMode }) {
         >
           <Html
             transform
+            distanceFactor={400}
             position={[0, 0, 0.002]}
             scale={htmlScale}
-            distanceFactor={1}
             zIndexRange={[100, 0]}
             sprite={false}
             occlude={false}
